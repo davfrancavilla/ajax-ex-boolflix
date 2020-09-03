@@ -55,31 +55,20 @@ $(document).ready(function(){
         if (packet.results.length == 0) { // caso in cui vengono restitui 0 film
             $("#movies-list").append("Nessun risultato");
         } else {
-            if (type == "movies"){
+                console.log("prova");
                 for (var i = 0; i < packet.results.length; i++) {
                     var movie = {
-                        type : "film",
-                        title: packet.results[i].title,
-                        originalTitle: packet.results[i].original_title,
+                        type : type,
+                        movieTitle: packet.results[i].title,
+                        seriesTitle: packet.results[i].name,
+                        movieOriginalTitle: packet.results[i].original_title,
+                        seriesOriginalTitle: packet.results[i].original_name,
                         language: setLanguage(packet.results[i].original_language),
                         rating: setStars(packet.results[i].vote_average)
                     }
                     var html = template(movie);
                     $("#movies-list").append(html);
                 };
-            } else {
-                for (var i = 0; i < packet.results.length; i++) {
-                    var movie = {
-                        type : "series",
-                        title: packet.results[i].name,
-                        originalTitle: packet.results[i].original_name,
-                        language: setLanguage(packet.results[i].original_language),
-                        rating: setStars(packet.results[i].vote_average)
-                    }
-                    var html = template(movie);
-                    $("#movies-list").append(html);
-                };
-            };
         };
     };
 
