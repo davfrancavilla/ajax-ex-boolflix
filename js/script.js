@@ -3,9 +3,9 @@ $(document).ready(function(){
     var source = $("#template").html();
     var template = Handlebars.compile(source);
 
-    var baseSearchUrl = "https://api.themoviedb.org/3/search/";
-    var movieUrl = "movie";
-    var seriesUrl = "tv";
+    var baseSearchUrl = "https://api.themoviedb.org/3/search/";  // url base per la ricerca di film/serie
+    var movieUrl = "movie"; // parte finale url per film
+    var seriesUrl = "tv"; // parte finale url per serie
 
     // ricerca dei film al click sul bottone nella pagina
     $("#search").click(function(){
@@ -50,12 +50,11 @@ $(document).ready(function(){
         }
     }
 
-    // funzione che crea l'oggetto movie e lo appende alla lista dei film
+    // funzione che crea l'oggetto movie/serie e lo appende alla lista dei risultati
     function createMovies(packet, type){
-        if (packet.results.length == 0) { // caso in cui vengono restitui 0 film
-            $("#movies-list").append("Nessun risultato");
+        if (packet.results.length == 0) { // caso in cui vengono restitui 0 risultati
+            $("#movies-list").append("<li>Nessun risultato trovato in " + "\"" + type + "\".</li>");
         } else {
-                console.log("prova");
                 for (var i = 0; i < packet.results.length; i++) {
                     var movie = {
                         type : type,

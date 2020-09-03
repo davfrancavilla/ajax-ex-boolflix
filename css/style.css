@@ -19,7 +19,7 @@ button {
 }
 
 #movies-list {
-    margin-left: 20px;
+    margin: 0 20px;
 }
 
 .movie {
@@ -39,6 +39,10 @@ button {
 .rating i {
     color: #eaea0b;
 
+}
+
+.movie {
+    padding: 5px;
 }
 
 
