@@ -3,8 +3,9 @@ $(document).ready(function(){
     var source = $("#template").html();
     var template = Handlebars.compile(source);
 
-    var movieUrl = "https://api.themoviedb.org/3/search/movie";
-    var seriesUrl = "https://api.themoviedb.org/3/search/tv";
+    var baseSearchUrl = "https://api.themoviedb.org/3/search/";
+    var movieUrl = "movie";
+    var seriesUrl = "tv";
 
     // ricerca dei film al click sul bottone nella pagina
     $("#search").click(function(){
@@ -31,7 +32,7 @@ $(document).ready(function(){
         if (movieName.length > 0) {
             $("#movie-name").val("");
             $.ajax({
-                url: url,
+                url: baseSearchUrl + url,
                 method: "GET",
                 data: {
                     api_key: "75a1a0a4142f1e4570128b8bfcc69bbf",
