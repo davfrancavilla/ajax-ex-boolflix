@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
     <link rel="stylesheet" href="css/style.css">
     <title>BoolFlix</title>
 </head>
@@ -19,8 +20,8 @@
             <ul>
                 <li>Titolo: {{title}}</li>
                 <li>Titolo originale: {{originalTitle}}</li>
-                <li>Lingua: {{language}}</li>
-                <li>Voto: {{rating}}</li>
+                <li class="language">Lingua: {{{language}}}</li>
+                <li class="rating">Voto: {{{rating}}}</li>
             </ul>
         </li>
     </script>

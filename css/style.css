@@ -15,6 +15,7 @@ button {
     padding: 5px;
     margin: 20px;
     border: 1px solid black;
+    border-radius: 3px;
 }
 
 #movies-list {
@@ -25,5 +26,19 @@ button {
     margin-bottom: 10px;
 }
 
+.language {
+    margin-bottom: 5px;
+}
+
+.language img {
+    height: 20px;
+    position: relative;
+    top: 5px;
+}
+
+.rating i {
+    color: #eaea0b;
+
+}
 
 
