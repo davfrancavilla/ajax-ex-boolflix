@@ -45,6 +45,10 @@ button {
     padding: 5px;
 }
 
+img.poster {
+    width: 150px;
+}
+
 
 .movies {
     background-color: lightgreen;
