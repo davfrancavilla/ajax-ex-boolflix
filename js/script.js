@@ -87,12 +87,10 @@ $(document).ready(function(){
 
   // funzione che sostituisce le lingue con le relative bandiere
   function setLanguage(lang) {
-    switch (lang) {
-      case "it":
-        return '<img src="img/en.png" alt="italian-flag">';
-      case "en":
-        return '<img src="img/it.png" alt="english-flag">';
-      default:
+    var languagesCollection = ["it", "en"];
+    if (languagesCollection.includes(lang)){
+        return '<img src="img/'+lang+'.png" alt="'+lang+'-flag">';
+    } else {
         return lang;
     }
   }
