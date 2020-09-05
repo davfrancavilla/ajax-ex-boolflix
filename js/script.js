@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    // creazione template handlebars per i risultati
     var source = $("#template").html();
     var template = Handlebars.compile(source);
 
@@ -20,7 +21,7 @@ $(document).ready(function(){
             var movieName = $("#movie-name").val();
             getMovies(movieUrl, "movies", movieName);
             getMovies(seriesUrl, "series", movieName);
-        }
+        };
     });
 
 
@@ -28,8 +29,8 @@ $(document).ready(function(){
 
     // chiamata all'api che restuitisce film o series tv (in base ai parametri passati) con i relativi dettagli
     function getMovies(url, type, movieName) {
-        $("#movies-list").empty();
         if (movieName.length > 0) {
+            $("#movies-list").empty();
             $("#movie-name").val("");
             $.ajax({
                 url: baseSearchUrl + url,
@@ -46,28 +47,28 @@ $(document).ready(function(){
                 error: function (err) {
                     alert("Errore:" + err);
                 }
-            })
-        }
-    }
+            });
+        };
+    };
 
     // funzione che crea l'oggetto movie/serie e lo appende alla lista dei risultati
     function createMovies(packet, type){
         if (packet.results.length == 0) { // caso in cui vengono restitui 0 risultati
             $("#movies-list").append("<li>Nessun risultato trovato in " + "\"" + type + "\".</li>");
         } else {
-                for (var i = 0; i < packet.results.length; i++) {
-                    var movie = {
-                        type : type,
-                        movieTitle: packet.results[i].title,
-                        seriesTitle: packet.results[i].name,
-                        movieOriginalTitle: packet.results[i].original_title,
-                        seriesOriginalTitle: packet.results[i].original_name,
-                        language: setLanguage(packet.results[i].original_language),
-                        rating: setStars(packet.results[i].vote_average)
-                    }
-                    var html = template(movie);
-                    $("#movies-list").append(html);
+            for (var i = 0; i < packet.results.length; i++) {
+                var movie = {
+                    type : type,
+                    movieTitle: packet.results[i].title,
+                    seriesTitle: packet.results[i].name,
+                    movieOriginalTitle: packet.results[i].original_title,
+                    seriesOriginalTitle: packet.results[i].original_name,
+                    language: setLanguage(packet.results[i].original_language),
+                    rating: setStars(packet.results[i].vote_average)
                 };
+                var html = template(movie);
+                $("#movies-list").append(html);
+            };
         };
     };
 
@@ -80,25 +81,28 @@ $(document).ready(function(){
                 return "<img src=\"img/it.png\" alt=\"english-flag\">";
             default:
                 return lang;
-        }
+        };
     };
 
     // funziona che mostra il voto con 5 stelle invece che in numero
     function setStars(apiRating) {
-        var rating = Math.ceil(apiRating / 2);
+        var rating = Math.floor(apiRating/2);
+        var remainder = apiRating%2;
         var fullStar = "<i class=\"fas fa-star\"></i>";
         var emptyStar = "<i class=\"far fa-star\"></i>";
+        var halfStar = "<i class=\"fas fa-star-half-alt\"></i>";
         var vote = "";
-        for (var j = 0; j < rating; j++) {
-            vote += fullStar;
-        }
-        for (var j = 0; j < 5 - rating; j++) {
-            vote += emptyStar;
-        }
-        return vote
-    }
-
-
-
+        for (var j = 0; j < 5; j++) {
+            if (j < rating){
+                vote += fullStar;
+            } else if (remainder != 0){
+                vote += halfStar;
+                remainder = 0;
+            } else {
+                vote += emptyStar;
+            }      
+        };
+        return vote;
+    };
 })
 
