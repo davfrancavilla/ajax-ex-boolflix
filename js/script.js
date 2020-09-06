@@ -53,24 +53,29 @@ $(document).ready(function() {
 
     // funzione che crea l'oggetto movie/serie e lo appende alla lista dei risultati
     function createMovies(packet, type) {
-        if (packet.results.length == 0 && $("#movies-list").html() == "") { // controllo se non ricevo risultati dall'API
-            $("#error").append("Nessun risultato trovato");
+        if (
+          packet.results.length == 0 &&
+          $("#movies-list").html() == ""
+        ) {
+          // controllo se non ricevo risultati dall'API
+          $("#error").text("Nessun risultato trovato");
+          console.log("no result");
         } else {
-            $("#error").empty();
-            for (var i = 0; i < packet.results.length; i++) {
-                var movie = {
-                    type: type,
-                    movieTitle: packet.results[i].title,
-                    seriesTitle: packet.results[i].name,
-                    img: getImage(packet.results[i].poster_path),
-                    movieOriginalTitle: packet.results[i].original_title,
-                    seriesOriginalTitle: packet.results[i].original_name,
-                    language: setLanguage(packet.results[i].original_language),
-                    rating: setStars(packet.results[i].vote_average),
-                };
-                var html = template(movie);
-                $("#movies-list").append(html);
-            }
+          $("#error").empty();
+          for (var i = 0; i < packet.results.length; i++) {
+            var movie = {
+              type: type,
+              movieTitle: packet.results[i].title,
+              seriesTitle: packet.results[i].name,
+              img: getImage(packet.results[i].poster_path),
+              movieOriginalTitle: packet.results[i].original_title,
+              seriesOriginalTitle: packet.results[i].original_name,
+              language: setLanguage(packet.results[i].original_language),
+              rating: setStars(packet.results[i].vote_average),
+            };
+            var html = template(movie);
+            $("#movies-list").append(html);
+          }
         }
     }
 

@@ -9,16 +9,23 @@
     <title>BoolFlix</title>
 </head>
 <body>
-    <input id="movie-name" type="text" placeholder="Nome film">
-    <button id="search">Cerca</button>
-
-    <div id="movies-list"></div>
-    <div id="error"></div>
+    <div class="container">
+        <div class="nav-bar">
+            <input id="movie-name" type="text" placeholder="Nome film">
+            <button id="search">Cerca</button>
+        </div>
+        <main>
+            <div id="movies-list"></div>
+            <div id="error"></div>
+        </main>
+    </div>
+    
 
 
     <script id="template" type="text/x-handlebars-template">
         <div class="movie {{type}}">
             <img class="poster" src="{{img}}" alt="poster-{{movieOriginalTitle}}{{seriesOriginalTitle}}">
+            <div class="layer"></div>
             <div class="movie-data">
                 <li>Titolo: {{movieTitle}}{{seriesTitle}}</li>
                 <li>Titolo originale: {{movieOriginalTitle}}{{seriesOriginalTitle}}</li>

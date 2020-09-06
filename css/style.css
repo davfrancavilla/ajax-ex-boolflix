@@ -5,6 +5,12 @@
     list-style: none;
 }
 
+body {
+    font-family: sans-serif;
+    background-color: black;
+    color: white;
+}
+
 .clearfix::after {
     content: "";
     clear: both;
@@ -14,6 +20,11 @@
 input:focus,
 button:focus {
     outline: none;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
 }
 
 input,
@@ -40,7 +51,11 @@ button {
 .movie:hover{
     transform: scale(1.05);
     z-index: 3;
-    
+}
+
+.movie:hover .layer,
+.movie:hover .movie-data{
+    opacity: 1;
 }
 
 img.poster {
@@ -51,8 +66,24 @@ img.poster {
     object-position: center;
 }
 
-.movie-data{
+.layer {
+    opacity: 0;
     position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000000b3;
+    transition-duration: 0.4s;
+    
+}
+
+.movie-data{
+    padding: 10px;
+    opacity: 0;
+    color: white;
+    position: absolute;
+    transition-duration: 0.4s;
 }
 
 .language {
