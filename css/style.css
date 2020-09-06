@@ -7,8 +7,6 @@
 
 body {
     font-family: sans-serif;
-    background-color: black;
-    color: white;
 }
 
 .clearfix::after {
@@ -27,18 +25,66 @@ button:focus {
     margin: 0 auto;
 }
 
-input,
-button {
+nav {
+    position: fixed;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: black;
+}
+
+nav .container {
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .container .left span {
+    color: red;
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 37px;
+}
+
+input {
     padding: 5px;
-    margin: 20px;
-    border: 1px solid black;
+    color: #e74c3c;
+    border: none;
+    border-bottom: 1px solid #e74c3c;
+    background-color: transparent;
+}
+
+button {
+    background-color: #e74c3c;
+    border: none;
     border-radius: 3px;
+    padding: 5px;
+
+}
+
+
+
+main {
+    background-color:gray;
+    color: black;
+    position: relative;
+    top: 70px;
+    height: calc(100vh - 70px);
+    overflow: scroll;
 }
 
 #movies-list {
     display: flex;
     flex-wrap: wrap;
 }
+
+#error {
+    padding: 5px;
+}
+
+
 
 .movie {
     position: relative;
@@ -49,7 +95,7 @@ button {
 }
 
 .movie:hover{
-    transform: scale(1.05);
+    transform: scale(0.95);
     z-index: 3;
 }
 

@@ -53,13 +53,8 @@ $(document).ready(function() {
 
     // funzione che crea l'oggetto movie/serie e lo appende alla lista dei risultati
     function createMovies(packet, type) {
-        if (
-          packet.results.length == 0 &&
-          $("#movies-list").html() == ""
-        ) {
-          // controllo se non ricevo risultati dall'API
-          $("#error").text("Nessun risultato trovato");
-          console.log("no result");
+        if (packet.results.length == 0 && $("#movies-list").html() == "") {// controllo se non ricevo risultati dall'API
+          $("#error").text("Nessun risultato");
         } else {
           $("#error").empty();
           for (var i = 0; i < packet.results.length; i++) {
