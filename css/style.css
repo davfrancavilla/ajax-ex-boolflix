@@ -5,6 +5,12 @@
     list-style: none;
 }
 
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 input:focus,
 button:focus {
     outline: none;
@@ -19,11 +25,34 @@ button {
 }
 
 #movies-list {
-    margin: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .movie {
-    margin-bottom: 10px;
+    position: relative;
+    width: 250px;
+    height: 400px;
+    margin: 5px;
+    transition-duration: 0.4s;
+}
+
+.movie:hover{
+    transform: scale(1.05);
+    z-index: 3;
+    
+}
+
+img.poster {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.movie-data{
+    position: absolute;
 }
 
 .language {
@@ -38,15 +67,6 @@ button {
 
 .rating i {
     color: #eaea0b;
-
-}
-
-.movie {
-    padding: 5px;
-}
-
-img.poster {
-    width: 150px;
 }
 
 
