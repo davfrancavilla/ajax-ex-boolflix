@@ -8,7 +8,7 @@ $(document).ready(function () {
   var movieUrl = "movie"; // parte finale url per film
   var seriesUrl = "tv"; // parte finale url per serie
 
-  // ingrandisce le schede dei risultati cliccandoci sopra per mostrare più testo
+  // ingrandisce le schede dei risultati cliccandoci sopra
   $(document).on("click", ".movie-container", function(){
     var element = $(this);
     if (element.hasClass("wide")){
@@ -91,13 +91,6 @@ $(document).ready(function () {
 
   function getCast(id, type) {
     var cast = "";
-    if (type == undefined) {
-      console.log("ID getCast");
-      console.log(id);
-    }
-
-    console.log("CAST");
-    console.log(cast + "23");
     return $.ajax({
       url: "https://api.themoviedb.org/3/" + type + "/" + id + "/credits",
       method: "GET",
@@ -105,16 +98,18 @@ $(document).ready(function () {
         api_key: "75a1a0a4142f1e4570128b8bfcc69bbf",
       },
       success: function (element) {
-        console.log("eieeieiei");
-        for (var x = 0; x < 5; x++) {
-					$('[data-id="' + id + '"]').find(".cast").append(element.cast[x].name + ", ");
-					if (x == 4){
-						$('[data-id="' + id + '"]').find(".cast").append(element.cast[x].name);
-					}
-					
+        if (element.cast.length != 0){
+          for (var x = 0; x < 5; x++) {
+            if (x == element.cast.length - 1 || x == 4) {
+              $('[data-id="' + id + '"]').find(".cast").append(element.cast[x].name);
+            } else {
+              $('[data-id="' + id + '"]').find(".cast").append(element.cast[x].name + ", ");
+            }
+          }
+        } else {
+          $('[data-id="' + id + '"]').find(".cast").append("Elenco attori non disponibile");
         }
-
-        // console.log();
+        
 	  },
       error: function (err) {
         alert("Errore:" + err);
