@@ -80,27 +80,35 @@ main {
 #movies-list {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 10px;
 }
 
 #error {
     padding: 5px;
 }
 
-.movie {
+.movie-container {
     position: relative;
-    width: 250px;
+    width: 20%;
     height: 400px;
-    margin: 5px;
+    padding: 5px;
     transition-duration: 0.4s;
 }
 
-.movie:hover{
+.movie {
+    height: 100%;
+    position: absolute;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+}
+
+.movie-container:hover{
     transform: scale(0.95);
     z-index: 3;
 }
 
-.movie:hover .layer,
-.movie:hover .movie-data{
+.movie-container:hover .layer,
+.movie-container:hover .movie-data{
     opacity: 1;
 }
 
@@ -116,10 +124,8 @@ img.poster {
 .layer {
     opacity: 0;
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: #000000b3;
     transition-duration: 0.4s;
     border-radius: 10px;
@@ -145,6 +151,10 @@ img.poster {
 
 .rating i {
     color: #eaea0b;
+}
+
+.wide {
+    width: 40%;
 }
 
 

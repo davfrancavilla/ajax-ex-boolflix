@@ -4,7 +4,9 @@
     <meta charset="utf-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel=icon href=img/favicon.ico>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+      integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <link rel=icon href=img/favicon.ico> 
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
@@ -32,32 +34,30 @@
     </main>
 
     <script id="template" type="text/x-handlebars-template">
-      <div class="movie {{type}}" data-id="{{id}}">
-        <img
-          class="poster"
-          src="{{img}}"
-          alt="poster-{{movieOriginalTitle}}{{seriesOriginalTitle}}"
-        />
-        <div class="layer"></div>
-        <div class="movie-data">
-          <ul>
-            <li>
-              Titolo: {{movieTitle}}{{seriesTitle}}
-            </li>
-            <li>
-              Titolo originale: {{movieOriginalTitle}}{{seriesOriginalTitle}}
-            </li>
-            <li class="language">
-              Lingua: {{{language}}}
-            </li>
-            <li class="rating">
-              Voto: {{{rating}}}
-            </li>
-            <li class="cast">
-              Attori:
-            </li>
-            
-          </ul>
+      <div class="movie-container">
+        <div class="movie {{type}}" data-id="{{id}}">
+          <img class="poster" src="{{img}}" alt="poster-{{movieOriginalTitle}}{{seriesOriginalTitle}}" />
+          <div class="layer"></div>
+          <div class="movie-data">
+            <ul>
+              <li>
+                Titolo: {{movieTitle}}{{seriesTitle}}
+              </li>
+              <li>
+                Titolo originale: {{movieOriginalTitle}}{{seriesOriginalTitle}}
+              </li>
+              <li class="language">
+                Lingua: {{{language}}}
+              </li>
+              <li class="rating">
+                Voto: {{{rating}}}
+              </li>
+              <li class="cast">
+                Attori:
+              </li>
+        
+            </ul>
+          </div>
         </div>
       </div>
     </script>

@@ -8,6 +8,17 @@ $(document).ready(function () {
   var movieUrl = "movie"; // parte finale url per film
   var seriesUrl = "tv"; // parte finale url per serie
 
+  // ingrandisce le schede dei risultati cliccandoci sopra per mostrare più testo
+  $(document).on("click", ".movie-container", function(){
+    var element = $(this);
+    if (element.hasClass("wide")){
+      element.removeClass("wide");
+    } else {
+      $(".movie-container").removeClass("wide", 500, "linear");
+      element.addClass("wide", 500, "linear");
+    } 
+  });
+
   // ricerca dei film al click sul bottone nella pagina
   $("#search").click(function () {
     init();
@@ -98,7 +109,7 @@ $(document).ready(function () {
         for (var x = 0; x < 5; x++) {
 					$('[data-id="' + id + '"]').find(".cast").append(element.cast[x].name + ", ");
 					if (x == 4){
-						$('[data-id="' + id + '"]').find(".cast").append(element.cast[x].name + ".");
+						$('[data-id="' + id + '"]').find(".cast").append(element.cast[x].name);
 					}
 					
         }
