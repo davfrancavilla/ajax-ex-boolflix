@@ -1,49 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel=icon href=img/favicon.ico>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
     <title>BoolFlix</title>
-</head>
-<body>
-   
-        <nav>
-            <div class="container">
-                <div class="left">
-                    <span>BOOLFLIX</span>
-                </div>
-                <div class="right">
-                    <input id="movie-name" type="text" placeholder="Nome film">
-                    <button id="search">Cerca</button>
-                </div>
-            </div>
-        </nav>
-        <main>
-            <div class="container">
-                <div id="movies-list"></div>
-                <div id="error"></div>
-            </div>
-        </main>
-    
-    
-
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <div class="left">
+          <span>BOOLFLIX</span>
+        </div>
+        <div class="right">
+          <input id="movie-name" type="text" placeholder="Nome film" />
+          <button id="search">Cerca</button>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="container">
+        <div id="movies-list"></div>
+        <div id="error"></div>
+      </div>
+    </main>
 
     <script id="template" type="text/x-handlebars-template">
-        <div class="movie {{type}}">
-            <img class="poster" src="{{img}}" alt="poster-{{movieOriginalTitle}}{{seriesOriginalTitle}}">
-            <div class="layer"></div>
-            <div class="movie-data">
-                <li>Titolo: {{movieTitle}}{{seriesTitle}}</li>
-                <li>Titolo originale: {{movieOriginalTitle}}{{seriesOriginalTitle}}</li>
-                <li class="language">Lingua: {{{language}}}</li>
-                <li class="rating">Voto: {{{rating}}}</li>
-            </div>
+      <div class="movie {{type}}" data-id="{{id}}">
+        <img
+          class="poster"
+          src="{{img}}"
+          alt="poster-{{movieOriginalTitle}}{{seriesOriginalTitle}}"
+        />
+        <div class="layer"></div>
+        <div class="movie-data">
+          <ul>
+            <li>
+              Titolo: {{movieTitle}}{{seriesTitle}}
+            </li>
+            <li>
+              Titolo originale: {{movieOriginalTitle}}{{seriesOriginalTitle}}
+            </li>
+            <li class="language">
+              Lingua: {{{language}}}
+            </li>
+            <li class="rating">
+              Voto: {{{rating}}}
+            </li>
+            <li class="cast">
+              Attori:
+            </li>
+            
+          </ul>
         </div>
+      </div>
     </script>
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>
